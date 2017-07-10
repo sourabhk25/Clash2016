@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Questions Page: Clash'16</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/questionsPageTemp.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script src="js/questionsPageTemp.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+.button1 {
+            background-color: #00c378;
+            box-shadow: 0 1px 4px #757575;
+            border: none;
+            width: 200px;
+            height: 50px;
+        }
+        .button1:active {
+          background-color: #0b9660;
+          box-shadow: 0 1px 4px #757575;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            background-color: red;
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        footer {
+            position: fixed;
+            width: 100%;
+            height: 10px;
+            background: #505050;
+            bottom: 0;
+        }
+
+        .copy p {
+            margin: 0;
+            padding: 0;
+            line-height: 10px;
+            color: #fff;
+            text-align: center;
+        }
+
+        #piebg {
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            margin-left: 20px;
+            left: 0;
+        }
+
+        #pie13 {
+            height: 200px;
+            width: 200px;
+            position: fixed;
+            left: 0;
+            margin-left: 20px;
+        }
+
+        #pie23 {
+            height: 200px;
+            width: 200px;
+            position: fixed;
+            left: 0;
+            margin-left: 20px;
+        }
+
+        #pie33 {
+            height: 200px;
+            width: 200px;
+            position: fixed;
+            left: 0;
+            margin-left: 20px;
+        }
+        .footer_row {
+            height: 35px;
+            padding-top: 5px;
+            background-color: black;
+            color: white;
+        }
+
+        body {
+            background: url("math3.jpg");
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.4);
+            box-shadow: 1px 1px 1px grey;
+        }
+    </style>
+</head>
+
+<body onload="move()">
+   <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <img src="clash.png" height=55px align="left">
+                <ul class="nav navbar-nav ">
+                    <li class="active"><a href="#" style="font-size:17px">Questions</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" style="width:430px">
+                    <li class="score-time">
+                        <label class="STLabel">Time</label>
+                    </li>
+                    <li class="score-time">
+                        <label class="STLabel">Score</label>
+                    </li>
+                    <li>
+                        <button class="button" onclick="dispmodal()" id="quitbutton">LogOut<span class="glyphicon glyphicon-log-out span"></span></button>
+                    </li>
+
+                      <img src="pisb.png"  height=54px align="right">
+
+
+
+
+
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid text-center">
+        <div class="row content" id="row1">
+            <div class="col-lg-2 sidenav">
+                <img class="tokenclass" src="coin transparent.png">
+                <br>
+                <br>
+                <label for="tokenclass" class="side-nav-btn">Coins: 3</label>
+                <p>
+                    <button class="side-nav-btn" id="btn-shad">Hop-A-Question</button>
+                </p>
+                <p>
+                    <button type="checkbox" value="1" class="side-nav-btn" id="btn-shad2" onclick="value1()">SexyFibonacci</button>
+                </p>
+                <p>
+                    <button class="side-nav-btn" id="btn-shad1">Instructions</button>
+                </p>
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">×</span>
+                        <img src="clash-ss.png" height="500px" width="1000px">
+                    </div>
+                </div>
+                <script>
+                    var modal = document.getElementById('myModal');
+                    var btn = document.getElementById("btn-shad1");
+                    var span = document.getElementsByClassName("close")[0];
+                    btn.onclick = function() {
+                        modal.style.display = "block";
+                    }
+                    span.onclick = function() {
+                        modal.style.display = "none";
+                    }
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                </script>
+                <div id="pieContainer">
+                    <img id="piebg" src="Pie chart/chart.png">
+                    <img src="Pie chart/13.png" id="pie13">
+                    <img id="pie23" src="Pie chart/23.png">
+                    <img src="Pie chart/33.png" id="pie33">
+                </div>
+            </div>
+            <div class="col-lg-6 text-left">
+                <br>
+                <textarea rows="27" cols="90" id="text12"></textarea>
+            </div>
+            <div class="col-lg-4 sidenav">
+                <form>
+                    <div class="radio-holder">
+                        <p>
+                            <input type='radio' value='1' name='radio' id='radio1' />
+                            <label for='radio1' id="radio-label">Option1 Comes Here</label>
+                        </p>
+
+                    </div>
+                    <div class="radio-holder">
+                        <p>
+                            <input type='radio' value='1' name='radio' id='radio2' />
+                            <label for='radio2' id="radio-label">Option2 Comes Here</label>
+                        </p>
+                    </div>
+                    <div class="radio-holder">
+                        <p>
+                            <input type='radio' value='1' name='radio' id='radio3' />
+                            <label for='radio3' id="radio-label">Option3 Comes Here</label>
+                        </p>
+                    </div>
+                    <div class="radio-holder">
+                        <p>
+                            <input type='radio' value='1' name='radio' id='radio4' />
+                            <label for='radio4' id="radio-label">Option4 Comes Here</label>
+                        </p>
+                    </div>
+                    <div class="radio-holder">
+                        <p>
+                            <input type='hidden' value='0' name='radio' id='radio5' />
+                    </div>
+
+                    <div class="radio-holder">
+                    <p>
+                        <div type="submit" class="button">
+                                <input type="submit" class="button1" value="SUBMIT" onclick="value2()" >
+                            </div>
+                    </p>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="myProgress" style="margin-bottom:35px;">
+
+        <div id="myBar"></div>
+        <center>
+            <h5>cpy: PICT</h5></center>
+    </div>
+    <div class="col-md-12 footer_row" style="position:fixed; bottom:0; text-align:center;font-family: 'Quicksand', sans-serif;">
+        <p> Copyright© CLASH, CREDENZ, PISB IEEE, 2016</p>
+    </div>
+
+    <div class="quit-modal" id="quitmodal">
+
+        <div align="center" class="quit-modal-content fadeInRight">
+            <header class="container" id="modal-head">
+                <h2 style="background:rgba(0,0,0,0.4)">Are You Sure?</h2></header>
+            <button id="redirect-to-results" onclick="location.href='index3.html';" style="color:white; background:rgba(0,0,0,0.4)">Proceed To Results</button>
+            <button id="hide-modal" onclick="hidemodal()" style="color:white">Go Back To Questions</button>
+        </div>
+
+</body>
+
+</html>
